@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: fleet-monkeys-api
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SERVER_HOST
+        value: 0.0.0.0
+      - key: CORS_ORIGIN
+        value: https://fleet-monkeys.netlify.app
+      - key: ENABLE_CACHE
+        value: true
+      - key: CACHE_TTL
+        value: 3600
+      - key: LOG_LEVEL
+        value: info
+      - key: CLUSTER_MODE
+        value: true
+      - key: WORKERS
+        value: auto
+      - key: JWT_SECRET
+        fromDatabase:
+          name: fleet-monkeys-db
+          property: connectionString
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: SSL_ENABLED
+        value: false
+    healthCheckPath: /health
+    autoDeploy: true
