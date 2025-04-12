@@ -31,7 +31,7 @@ services:
         value: 24h
       - key: SSL_ENABLED
         value: false
- key: GOOGLE_API_KEY
+      - key: GOOGLE_API_KEY
         value: AIzaSyB1pRoprsMGPJB-2nxsjVzK5x3WZk-e1EI
     healthCheckPath: /health
     autoDeploy: true
